@@ -1,0 +1,583 @@
+{
+	"compiler": {
+		"version": "0.8.21+commit.d9974bed"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "artworkId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "artistName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "creationDate",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "startingPrice",
+						"type": "uint256"
+					}
+				],
+				"name": "ArtworkListed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "artworkId",
+						"type": "uint256"
+					}
+				],
+				"name": "ArtworkUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "artworkId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "winner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "winningBid",
+						"type": "uint256"
+					}
+				],
+				"name": "AuctionEnded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "artworkId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newEndTime",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newStartingPrice",
+						"type": "uint256"
+					}
+				],
+				"name": "AuctionUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "artworkId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "bidder",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "NewBid",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "artworkIds",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "artworks",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address payable",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "artistName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "creationDate",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "medium",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "dimensions",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "startingPrice",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "currentBid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address payable",
+						"name": "highestBidder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "auctionEndTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "auctionEnded",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_artworkId",
+						"type": "uint256"
+					}
+				],
+				"name": "bid",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_artworkId",
+						"type": "uint256"
+					}
+				],
+				"name": "endAuction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllArtworks",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address payable",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "artistName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "creationDate",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "medium",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "dimensions",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "startingPrice",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "currentBid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address payable",
+								"name": "highestBidder",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "auctionEndTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "auctionEnded",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct ArtworkAuction.Artwork[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					}
+				],
+				"name": "getArtwork",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address payable",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "artistName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "creationDate",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "medium",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "dimensions",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "startingPrice",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "currentBid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address payable",
+								"name": "highestBidder",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "auctionEndTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "auctionEnded",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct ArtworkAuction.Artwork",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getNumberOfEndedAuctions",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getNumberOfLiveAuctions",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_artworkId",
+						"type": "uint256"
+					}
+				],
+				"name": "joinAuctionWithInitialBid",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_artistName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_creationDate",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_medium",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_dimensions",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_startingPrice",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_auctionDuration",
+						"type": "uint256"
+					}
+				],
+				"name": "listArtwork",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_artworkId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_artistName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_creationDate",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_medium",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_dimensions",
+						"type": "string"
+					}
+				],
+				"name": "updateArtwork",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_artworkId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_newEndTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_newStartingPrice",
+						"type": "uint256"
+					}
+				],
+				"name": "updateAuction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Auction.sol": "ArtworkAuction"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/utils/Counters.sol": {
+			"keccak256": "0xf0018c2440fbe238dd3a8732fa8e17a0f9dce84d31451dc8a32f6d62b349c9f1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://59e1c62884d55b70f3ae5432b44bb3166ad71ae3acd19c57ab6ddc3c87c325ee",
+				"dweb:/ipfs/QmezuXg5GK5oeA4F91EZhozBFekhq5TD966bHPH18cCqhu"
+			]
+		},
+		"contracts/Auction.sol": {
+			"keccak256": "0x9137d77033806a1502fc2f6e40cfb8aaca5acc71cc551a53be56e1aacd33d340",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fd97229dd45abb4296343f9375aceeef4ea64345a7eab13d51bab0c1a3b741cf",
+				"dweb:/ipfs/Qmamt6ckiTDcYe6rKtcD9pWBjcgYXvmxFEa9QFws1r2DmS"
+			]
+		}
+	},
+	"version": 1
+}
